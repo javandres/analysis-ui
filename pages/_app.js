@@ -19,6 +19,7 @@ import '../styles.css'
 const ErrorModal = dynamic(() => import('lib/components/error-modal'))
 const Map = dynamic(() => import('lib/components/map'), {ssr: false})
 const Sidebar = dynamic(() => import('lib/components/sidebar'))
+const Topbar = dynamic(() => import('lib/components/topbar'))
 
 // Check if the passed in group matches the environment variable
 const isAdmin = user =>
@@ -116,30 +117,33 @@ function ComponentWithMap(p) {
   return (
     <State initialState={noopFragment}>
       {(mapChildren, setMapChildren) => (
-        <Flex pointerEvents={routeChanging ? 'none' : 'inherit'}>
-          <style jsx global>{`
-            body {
-              height: 100vh;
-              overflow: hidden;
-              width: 100vw;
-            }
-          `}</style>
-          <Sidebar />
-          <Box
-            borderRight='1px solid #ddd'
-            bg='#fff'
-            opacity={routeChanging ? 0.4 : 1}
-          >
-            <p.Component {...p.pageProps} setMapChildren={setMapChildren} />
-          </Box>
-          <Box
-            flexGrow='1'
-            opacity={routeChanging ? 0.4 : 1}
-            position='relative'
-          >
-            <Map>{mapChildren}</Map>
-          </Box>
-        </Flex>
+        <>
+          <Topbar />
+          <Flex pointerEvents={routeChanging ? 'none' : 'inherit'}>
+            <style jsx global>{`
+              body {
+                height: 100vh;
+                overflow: hidden;
+                width: 100vw;
+              }
+            `}</style>
+            <Sidebar />
+            <Box
+              borderRight='1px solid #ddd'
+              bg='#fff'
+              opacity={routeChanging ? 0.4 : 1}
+            >
+              <p.Component {...p.pageProps} setMapChildren={setMapChildren} />
+            </Box>
+            <Box
+              flexGrow='1'
+              opacity={routeChanging ? 0.4 : 1}
+              position='relative'
+            >
+              <Map>{mapChildren}</Map>
+            </Box>
+          </Flex>
+        </>
       )}
     </State>
   )
