@@ -9,12 +9,14 @@ const path = require('path')
 const webpack = require('webpack')
 
 const env = {
-  API_URL: process.env.API_URL,
+  API_URL: 'http://localhost:7070', //  process.env.API_URL,
   AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,
   AUTH0_DOMAIN: process.env.AUTH0_DOMAIN,
   LOGROCKET: process.env.LOGROCKET,
-  MAPBOX_ACCESS_TOKEN: process.env.MAPBOX_ACCESS_TOKEN
+  MAPBOX_ACCESS_TOKEN:
+    'pk.eyJ1IjoiamFhdmFuZHJleCIsImEiOiJjanRoOW9ycm8yYzU3NDNvOTRiMWNjMXNpIn0.Kpr0kyOLSm-kcLcTn0DY9Q' //process.env.MAPBOX_ACCESS_TOKEN
 }
+console.log(env)
 
 module.exports = withMDX(
   withBundleAnalyzer({
