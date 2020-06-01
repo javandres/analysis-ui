@@ -39,12 +39,8 @@ RUN rm ./node_modules -rf
 
 RUN yarn
 
-#COPY /config/settings.yml /opt/datatools-ui/configurations/default/settings.yml
-
 EXPOSE 3000
 
-#CMD envsubst < /config/env.yml > /opt/datatools-ui/configurations/default/env.yml && \
-#    $(npm bin)/mastarm build --env production && serve -p 9966
 RUN yarn build
 
 CMD [ "yarn",  "start" ]
