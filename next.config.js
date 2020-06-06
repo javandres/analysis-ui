@@ -20,6 +20,10 @@ console.log(env)
 
 module.exports = withMDX(
   withBundleAnalyzer({
+    assetPrefix:
+      process.env.NODE_ENV === 'production'
+        ? 'http://201.159.223.152/analisis/'
+        : '',
     target: 'serverless',
     pageExtensions: ['js', 'jsx', 'mdx'],
     env,
