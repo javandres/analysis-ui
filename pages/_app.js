@@ -89,7 +89,9 @@ export default class extends App {
     return (
       <>
         <Head>
-          <title key='title'>Conveyal Analysis</title>
+          <title key='title'>
+            Llactalab - Análisis de Movilidad - Universidad de Cuenca
+          </title>
         </Head>
         <Container>
           <Provider store={this.reduxStore}>
