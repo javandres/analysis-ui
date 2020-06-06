@@ -14,19 +14,20 @@ const env = {
   AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,
   AUTH0_DOMAIN: process.env.AUTH0_DOMAIN,
   LOGROCKET: process.env.LOGROCKET,
-  MAPBOX_ACCESS_TOKEN: process.env.MAPBOX_ACCESS_TOKEN
+  MAPBOX_ACCESS_TOKEN: process.env.MAPBOX_ACCESS_TOKEN,
+  BASE_PATH: process.env.BASE_PATH
 }
 console.log(env)
 
 module.exports = withMDX(
   withBundleAnalyzer({
-    assetPrefix:
-      process.env.NODE_ENV === 'production'
-        ? 'http://201.159.223.152/analisis/'
-        : '',
+    assetPrefix: process.env.BASE_PATH || '',
     target: 'serverless',
     pageExtensions: ['js', 'jsx', 'mdx'],
     env,
+    publicRuntimeConfig: {
+      basePath: process.env.BASE_PATH || ''
+    },
     webpack: config => {
       // Allow `import 'lib/message'`
       config.resolve.alias['lib'] = path.join(__dirname, 'lib')
