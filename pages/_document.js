@@ -1,5 +1,7 @@
 import Document, {Html, Head, Main, NextScript} from 'next/document'
 import React from 'react'
+import getConfig from 'next/config'
+const {publicRuntimeConfig} = getConfig()
 
 import {LOGO_URL} from 'lib/constants'
 
@@ -44,8 +46,16 @@ export default class extends Document {
         <Head>
           <link rel='shortcut icon' href={LOGO_URL} type='image/x-icon' />
           <Stylesheets />
-          <link rel='stylesheet' href='/static/react-datetime.css' />
-          <link rel='stylesheet' href='/static/styles.css' />
+          {/* <link rel='stylesheet' href='/static/react-datetime.css' />
+          <link rel='stylesheet' href='/static/styles.css' /> */}
+          <link
+            rel='stylesheet'
+            href={`${publicRuntimeConfig.basePath}/static/react-datetime.css`}
+          />
+          <link
+            rel='stylesheet'
+            href={`${publicRuntimeConfig.basePath}/static/styles.css`}
+          />
         </Head>
         <body>
           <Main />
