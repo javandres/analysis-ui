@@ -1,0 +1,7 @@
+version: '3'
+services:
+  ui:
+    container_name: convanalysis_ui
+    build: ./
+    ports:
+      - '3000:3000'
