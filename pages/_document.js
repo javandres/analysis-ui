@@ -46,7 +46,7 @@ const Stylesheets = () =>
       />
       <link
         rel='stylesheet'
-        href={`${publicRuntimeConfig.basePath}/leaflet-draw/leaflet.draw.css`}
+        href={`${publicRuntimeConfig.basePath}/static/leaflet-draw/leaflet.draw.css`}
       />
       <link
         rel='stylesheet'

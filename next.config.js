@@ -21,7 +21,7 @@ console.log(env)
 
 module.exports = withMDX(
   withBundleAnalyzer({
-    assetPrefix: process.env.BASE_PATH || '',
+    //assetPrefix: process.env.BASE_PATH || '',
     target: 'server',
     pageExtensions: ['js', 'jsx', 'mdx'],
     env,
